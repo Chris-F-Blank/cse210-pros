@@ -12,7 +12,6 @@ class Program
         }
 
         SaveLoad.SaveData(filename, entries);
-        
-        // Additional functionality can be added here based on project requirements
+    
     }
 }
