@@ -18,7 +18,7 @@ class Program
             answer = Console.ReadLine();
             if (answer == "1")
             {
-                Entry data = UserPrompt.PromptForData(1);
+                Entry data = UserPrompt.PromptForData();
                 entries.Add(data);
                 Console.WriteLine(entries.Capacity);
             }
@@ -32,7 +32,10 @@ class Program
             }
             else if (answer == "4")
             {
-
+                foreach (Entry entrie in entries)
+                {
+                    entrie.entryDisplay();
+                }
             }
             else if (answer == "5")
             {

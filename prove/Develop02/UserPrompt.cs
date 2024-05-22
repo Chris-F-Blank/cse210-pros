@@ -28,35 +28,35 @@ public class UserPrompt
             "If I had one thing I could do over today, what would it be? "
         ];
 
-        int prompt = promptNumber.Value;
+        int prompt;// = promptNumber.Value;
         
-        // if (promptNumber.HasValue == false)
-        // {
-        //     Random random = new();
-        //     prompt = random.Next(0, prompts.Length);
-        // }
+        if (promptNumber.HasValue == false)
+        {
+            Random random = new();
+            prompt = random.Next(0, prompts.Length);
+        }
 
-        // else 
-        // {
-        //     prompt=promptNumber.Value;
-        // }
+        else 
+        {
+            prompt=promptNumber.Value;
+        }
 
         
         Console.WriteLine(prompts[prompt]);
 
-        string userInput = Display.GetUserInput("Enter data: (enter x to display all prompts) ");
+        string userInput = Display.GetUserInput("Enter data: ");
 
-        if (userInput == "x")
-        {
-            for (int i=0; i<prompts.Length; i++)
-            {
-                 Console.WriteLine($"Prompt {i + 1}: {prompts[i]}"); 
-            }
-            Console.WriteLine("which prompt would you prefer? ");
-            string answer = Console.ReadLine();
-            prompt=int.Parse(answer) -1;
-            PromptForData(prompt);
-        }
+        // if (userInput == "x")
+        // {
+        //     for (int i=0; i<prompts.Length; i++)
+        //     {
+        //          Console.WriteLine($"Prompt {i + 1}: {prompts[i]}"); 
+        //     }
+        //     Console.WriteLine("which prompt would you prefer? ");
+        //     string answer = Console.ReadLine();
+        //     prompt=int.Parse(answer) -1;
+        //     PromptForData(prompt);
+        // }
 
         DateTime todaysDate = DateTime.Today;
         

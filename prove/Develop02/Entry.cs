@@ -2,6 +2,10 @@ public class Entry
 {
     // Attributes
     private string response, prompt, date;
+    public void entryDisplay()
+    {
+        Console.WriteLine($"{response}, {prompt}, {date}");
+    }
 
     public Entry(string res, string p, string d) {
         response = res;
