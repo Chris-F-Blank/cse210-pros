@@ -52,7 +52,9 @@ public class UserPrompt
             {
                  Console.WriteLine($"Prompt {i + 1}: {prompts[i]}"); 
             }
-            Console.WriteLine("");
+            Console.WriteLine("which prompt would you prefer? ");
+            string answer = Console.ReadLine();
+            prompt=int.Parse(answer) -1;
             PromptForData(prompt);
         }
 

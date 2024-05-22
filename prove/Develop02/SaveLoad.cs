@@ -33,10 +33,11 @@ public class SaveLoad
             Console.WriteLine($"Entry Date: {entries.Count}");
             // filename = "C:\\User\Desktop\journal1.txt
             using StreamWriter outputFile = File.CreateText(pathname);
-            outputFile.WriteLine($"All Journal Entries for {entries.First().getDate()}");
-            for (int i = 0; i < entries.Capacity; i++) {
-                outputFile.WriteLine($"Prompt {i}: {entries[i].getPrompt()}");
-                outputFile.WriteLine($"Entry {i}: {entries[i].getResponse()}");
+            // outputFile.WriteLine($"All Journal Entries for {entries.First().getDate()}");
+            for (int i = 0; i < entries.Count; i++) {
+                outputFile.Write($"{entries[i].getDate()}");
+                outputFile.Write($"~|~{entries[i].getPrompt()}");
+                outputFile.WriteLine($"~|~{entries[i].getResponse()}");
             }
 
             Display.ShowMessage("Data saved successfully.");
@@ -47,8 +48,22 @@ public class SaveLoad
 
     }
 
-    public static string[] LoadData(string filename)
+    public static string[] LoadStrings(string filename)
     {
         return File.ReadAllLines(filename);
     }
+
+    public static List<Entry> LoadData(string filename){
+        string pathname = $"{filename}\\journal1.txt";
+        string[] strings = LoadStrings (pathname);
+        List<Entry> entries = new ();
+
+        foreach (string line in strings){
+            string[] s= line.Split("~|~");
+            Entry e= new Entry(s[1], s[2], s[0]);
+            entries.Add(e);
+        }
+        return entries;
+    }
+
 }
