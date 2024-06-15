@@ -1,33 +1,36 @@
 using System;
 
-class Program
-{
-    static void Main(string[] args)
+// namespace Develop04
+
+    class Program
     {
-        while (true)
+        static void Main(string[] args)
         {
-            Console.Clear();
-            Console.WriteLine("Choose an activity:");
-            Console.WriteLine("1. Breathing");
-            Console.WriteLine("2. Reflection");
-            Console.WriteLine("3. Listing");
-            Console.WriteLine("4. Quit");
-            Console.Write("Enter your choice: ");
-            int choice = int.Parse(Console.ReadLine());
-
-            Activity activity = choice switch
+            while (true)
             {
-                1 => new Breathing(),
-                2 => new Reflection(),
-                3 => new Listing(),
-                4 => null,
-                _ => throw new ArgumentException("Invalid choice")
-            };
+                Console.Clear();
+                Console.WriteLine("Choose an activity:");
+                Console.WriteLine("1. Breathing");
+                Console.WriteLine("2. Reflection");
+                Console.WriteLine("3. Listing");
+                Console.WriteLine("4. Quit");
+                Console.Write("Enter your choice: ");
+                int choice = int.Parse(Console.ReadLine());
 
-            if (activity == null)
-                break;
+                Activity activity = choice switch
+                {
+                    1 => new Breathing(),
+                    2 => new Reflection(),
+                    3 => new Listing(),
+                    4 => null,
+                    _ => throw new ArgumentException("Invalid choice")
+                };
 
-            activity.Run();
+                if (activity == null)
+                    break;
+
+                activity.Run();
+            }
         }
     }
-}
+
