@@ -1,0 +1,4 @@
+SimpleGoal:run,1
+EternalGoal:study hard,50
+ChecklistGoal:attend the temple,50,3,30,1
+Score:100
