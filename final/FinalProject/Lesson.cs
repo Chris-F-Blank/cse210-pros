@@ -29,5 +29,6 @@ namespace SpanishLearningApp
         }
 
         public abstract void SpecificLessonDetails();
+        public abstract void InteractiveExercise();
     }
 }

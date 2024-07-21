@@ -23,11 +23,21 @@ namespace SpanishLearningApp
 
         public void DisplayLessons()
         {
-            foreach (var lesson in lessons)
+            for (int i = 0; i < lessons.Count; i++)
             {
-                System.Console.WriteLine(lesson.GetLessonInfo());
-                lesson.SpecificLessonDetails();
+                System.Console.WriteLine($"{i + 1}. {lessons[i].GetLessonInfo()}");
+                lessons[i].SpecificLessonDetails();
             }
+        }
+
+        public int GetLessonCount()
+        {
+            return lessons.Count;
+        }
+
+        public Lesson GetLessonByIndex(int index)
+        {
+            return lessons[index];
         }
     }
 }

@@ -14,5 +14,15 @@ namespace SpanishLearningApp
         {
             System.Console.WriteLine($"This is a Pronunciation Lesson. Tips: {tips}");
         }
+
+        public override void InteractiveExercise()
+        {
+            System.Console.WriteLine("Practice rolling your R's by repeating the following word: 'perro'. Type 'done' when you are finished.");
+            string userAnswer = System.Console.ReadLine();
+            if (userAnswer.ToLower() == "done")
+            {
+                System.Console.WriteLine("Great! Keep practicing your pronunciation.");
+            }
+        }
     }
 }

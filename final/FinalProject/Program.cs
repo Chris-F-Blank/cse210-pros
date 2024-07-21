@@ -21,17 +21,34 @@ namespace SpanishLearningApp
             lessonManager.AddLesson(grammarLesson);
             lessonManager.AddLesson(convLesson);
 
-            // Display lessons
+            // Display lessons and start interaction
             lessonManager.DisplayLessons();
 
-            // Assign and display scores for lessons
-            ScoreForLesson scoreForVocab = new ScoreForLesson(vocabLesson);
-            scoreForVocab.AssignScore(85);
-            Console.WriteLine($"Score for {vocabLesson.GetLessonInfo()}: {scoreForVocab.GetScore()}");
-
-            ScoreForLesson scoreForGrammar = new ScoreForLesson(grammarLesson);
-            scoreForGrammar.AssignScore(90);
-            Console.WriteLine($"Score for {grammarLesson.GetLessonInfo()}: {scoreForGrammar.GetScore()}");
+            // Start an interactive session
+            bool continueLearning = true;
+            while (continueLearning)
+            {
+                Console.WriteLine("\nEnter the number of the lesson you want to start (or type 'exit' to quit):");
+                string input = Console.ReadLine();
+                if (input.ToLower() == "exit")
+                {
+                    continueLearning = false;
+                }
+                else
+                {
+                    if (int.TryParse(input, out int lessonNumber) && lessonNumber > 0 && lessonNumber <= lessonManager.GetLessonCount())
+                    {
+                        Lesson selectedLesson = lessonManager.GetLessonByIndex(lessonNumber - 1);
+                        selectedLesson.StartLesson();
+                        selectedLesson.InteractiveExercise();
+                        selectedLesson.EndLesson();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please try again.");
+                    }
+                }
+            }
         }
     }
 }
